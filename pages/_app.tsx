@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import '@/styles/globals.css';
 
@@ -13,12 +14,14 @@ function App({ Component, pageProps }: AppProps<{}>) {
   const queryClient = new QueryClient();
 
   return (
-    <div className={inter.className}>
-      <Toaster />
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
-    </div>
+    <GoogleOAuthProvider clientId="313398112272-o2kv50rvmq6okhbpqmq1ces50ek2vcmd.apps.googleusercontent.com">
+      <div className={inter.className}>
+        <Toaster />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </div>
+    </GoogleOAuthProvider>
   );
 }
 

@@ -39,6 +39,7 @@ import { HomeInitialState, initialState } from './home.state';
 
 import { v4 as uuidv4 } from 'uuid';
 import { RAGMAN_API_KEY } from '@/utils/app/const';
+import { LogoutButton } from '@/components/Auth';
 
 interface Props {
 }
@@ -341,7 +342,13 @@ const Home = ({
               <Chat stopConversationRef={stopConversationRef} />
             </div>
 
-            <Promptbar />
+            <div className="flex flex-col">
+              <div className="mt-2 ml-2 text-sidebar flex w-[190px] flex-shrink-0 cursor-pointer select-none items-center gap-3 rounded-md border border-white/20 text-white transition-colors duration-200 hover:bg-gray-500/10">
+                <LogoutButton />
+              </div>
+
+              <Promptbar />
+            </div>
           </div>
         </main>
       )}
